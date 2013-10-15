@@ -1,7 +1,8 @@
 spline-web
 ==========
 
-You will need leiningen to build the uberjar:
+You will need [leiningen](https://github.com/technomancy/leiningen) to build the uberjar:
+
 Go to the application folder and do
 
 > lein uberjar
