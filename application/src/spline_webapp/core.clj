@@ -29,7 +29,7 @@
   "<h1> Invalid Route </h1>")
 
 (defroutes routes
-  (POST "/foo*" {params :form-params} (store-email params))
+  (POST "/register-email*" {params :form-params} (store-email params))
   (GET "/stats-are-for-twats/" [] show-stats)
   (route/not-found not-found-str))
 
