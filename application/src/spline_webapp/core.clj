@@ -1,18 +1,25 @@
 (ns spline-webapp.core
   (:use [compojure.route :only [files not-found]]
         [compojure.handler :only [site]] ; form, query params decode; cookie; session, etc
-        [compojure.core :only [defroutes GET POST DELETE ANY context]]
+        [compojure.core :only [defroutes GET POST]]
         [compojure.route :as route]
-        [clj-time.coerce]
-        [clj-time.local]
-        org.httpkit.server)
+        [korma.db :as db]
+        korma.core
+        [org.httpkit.server :as server])
   (:gen-class))
+
+(def spline-db-spec (postgres {:db "spline" :user "postgres" :password "spline"}))
+
+(defentity users)
 
 (defn show-stats [_]
   "<h1>DUMMY STATS</h1>")
 
 (defn store-email [{email "email" timestamp "timestamp"}]
-  "OK")
+  (try
+    (db/with-db spline-db-spec
+      (insert users (values {:timestamp (read-string timestamp) :email email})))
+    (catch Exception e (not-found (str e)))))
 
 (defn not-found-str [req]
   "<h1> Invalid Route </h1>")
@@ -24,4 +31,4 @@
 
 (defn -main [& port]
   (let [port (Integer/parseInt (get (System/getenv) "SPLINE_PORT" (or (first port) "8080")))]
-    (run-server (site #'routes) {:port port})))
+    (server/run-server (site #'routes) {:port port})))

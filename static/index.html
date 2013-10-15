@@ -243,7 +243,9 @@
       e.preventDefault();
       var data = $('#emailform').serialize();
       data = data + "&timestamp=" + $.now();
-      $.post('/foo/', data);
+      $.post('/foo/', data, function (data, status, xhr) {
+        $('#focusedInput')[0].placeholder="Thank You!";
+        $('#focusedInput').val("");});
     });
   </script>
   
