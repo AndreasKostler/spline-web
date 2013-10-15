@@ -13,7 +13,11 @@
 (defentity users)
 
 (defn show-stats [_]
-  "<h1>DUMMY STATS</h1>")
+  (let [cnt (try
+              (select users 
+                      (aggregate (count :*) :cnt :status))
+              (catch Exception e "n/a"))]
+    (str "<h2> " cnt " visitors have registered so far." "</h2>")))
 
 (defn store-email [{email "email" timestamp "timestamp"}]
   (try
