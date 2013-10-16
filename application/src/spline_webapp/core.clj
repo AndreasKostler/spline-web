@@ -14,10 +14,11 @@
 
 (defn show-stats [_]
   (let [cnt (try
-              (select users 
-                      (aggregate (count :*) :cnt :status))
-              (catch Exception e "n/a"))]
-    (str "<h2> " cnt " visitors have registered so far." "</h2>")))
+              (db/with-db spline-db-spec
+                (select users
+                        (aggregate (count :*) :cnt)))
+              (catch Exception e nil))]
+    (str "<h2> " (or (and cnt (:cnt (first cnt))) "n/a") " visitors have registered so far." "</h2>")))
 
 (defn store-email [{email "email" timestamp "timestamp"}]
   (try
