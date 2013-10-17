@@ -2,7 +2,7 @@ echo "Post-merge hook in action..."
 echo "Reload nginx config"
 nginx -s reload
 echo "Rebuild spline webapp"
-cd /home/www/spline-web/appliaction
+cd /home/www/spline-web/application
 su www lein uberjar
 exit
 echo "Restart spline webapp"
