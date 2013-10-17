@@ -16,3 +16,5 @@ It doesn't do much yet, though.
 You will also need to install nginx and copy the provided default.conf to wherever your nginx installation keeps it's config files.
 
 To enable the db backend, install postgres, create a user postgres, password 'spline', creat a databse named spline, and make sure you adjust pg_hbe.conf accordingly. There is a sql file in the sql folder - run it. 
+
+Check it out on 103.18.40.131
