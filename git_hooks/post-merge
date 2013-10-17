@@ -1,0 +1,9 @@
+echo "Post-merge hook in action..."
+echo "Reload nginx config"
+nginx -s reload
+echo "Rebuild spline webapp"
+cd appliaction
+su andreas lein uberjar
+exit
+echo "Restart spline webapp"
+# kill -HUP `/var/run/spline-webapp.pid`
