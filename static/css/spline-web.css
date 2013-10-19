@@ -185,19 +185,51 @@ i.service-icon:hover {
   background-size: cover;
 }
 
+/* Description */
+
+.description {
+  background: #7fbbda;
+  padding: 50px 0;
+  color: #ffffff;
+}
+
+.description-item {
+  margin-bottom: 15px;
+}
+
+i.description-icon {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle; 
+  text-align: center;
+}
+
+i.description-icon:hover {
+  font-size: 68px;
+}
+
+
 /* Portfolio */
 
-.portfolio {
-  padding: 50px 0;
-}
+/**************************/
+/* .portfolio {           */
+/*   padding: 50px 0;     */
+/* }                      */
+/*                        */
+/* .portfolio-item {      */
+/*   margin-bottom: 25px; */
+/* }                      */
+/*                        */
+/* .img-portfolio {       */
+/*   margin: 0 auto;      */
+/* }                      */
+/**************************/
 
-.portfolio-item {
-  margin-bottom: 25px;
-}
-
-.img-portfolio {
-  margin: 0 auto;
-}
 
 
 /* Call to Action */
