@@ -7,4 +7,4 @@ su www lein uberjar
 exit
 echo "Restart spline webapp"
 kill -9 `ps aux | grep spline | head -1 | awk '{print $2}'`
-javar -jar target/spline-web.jar
+java -jar target/spline-web.jar
