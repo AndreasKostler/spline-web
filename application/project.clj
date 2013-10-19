@@ -9,6 +9,6 @@
                  [korma "0.3.0-RC6"]
                  [org.postgresql/postgresql "9.2-1003-jdbc4"]]
   :uberjar-name "spline-webapp.jar"
-  :main spline-webapp.core
-  :profiles {:uberjar {:aot :all}})
+  :aot [spline-webapp.core]
+  :main spline-webapp.core)
 
