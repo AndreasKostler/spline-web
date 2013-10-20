@@ -2,7 +2,9 @@ echo "Post-merge hook in action..."
 echo "Reload nginx config"
 nginx -s reload
 echo "Rebuild spline webapp"
-APP_DIR=/home/www/spline-web/application
+SPLINE_HOME=/home/www/spline-web
+APP_DIR=$SPLINE_HOME/application
+chmod a+x $SPLINE_HOME/pull_changes
 su www -c "
 (
 cd $APP_DIR
