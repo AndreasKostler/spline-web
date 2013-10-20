@@ -2,9 +2,12 @@ echo "Post-merge hook in action..."
 echo "Reload nginx config"
 nginx -s reload
 echo "Rebuild spline webapp"
-cd /home/www/spline-web/application
-su www lein uberjar
-exit
-echo "Restart spline webapp"
-kill -9 `ps aux | grep spline | head -1 | awk '{print $2}'`
-java -jar target/spline-web.jar
+APP_DIR=/home/www/spline-web/application
+su www -c "
+(
+cd $APP_DIR
+lein uberjar
+echo \"Restart spline webapp\"
+kill -9 `ps aux | grep spline-webapp | head -1 | awk '{print $2}'`
+java -jar target/spline-webapp.jar &
+)"
