@@ -10,6 +10,6 @@ su www -c "
 cd $APP_DIR
 lein uberjar
 echo \"Restart spline webapp\"
-kill -9 `ps aux | grep spline-webapp | head -1 | awk '{print $2}'`
+kill -9 `ps aux | egrep '^www.*spline-webapp' | head -1 | awk '{print $2}'`
 java -jar target/spline-webapp.jar &
 )"

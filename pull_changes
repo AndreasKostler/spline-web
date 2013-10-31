@@ -1,2 +1,13 @@
 cd /home/www/spline-web
 git pull
+SPLINE_WEBAPP_PID=`ps aux | egrep '^www.*spline-webapp' | head -1 | awk '{print $2}'`
+
+if [ -z "$SPLINE_WEBAPP_PID" ]
+then
+su www -c "
+(
+cd $APP_DIR
+echo \"Restart spline webapp\"
+java -jar target/spline-webapp.jar &
+)"
+fi
